@@ -1,0 +1,50 @@
+<div class="text-end">
+  <pagination-controls
+    class="my-pagination"
+    (pageChange)="page = $event"
+    [maxSize]="5"
+    [directionLinks]="true"
+  >
+  </pagination-controls>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="table-header">
+      <tr>
+        @for(header of tableHeaders(); track header.key) {
+        <th class="text-center">{{ header.name }}</th>
+        }@if(isEditBtnEnabled()){
+        <th class="text-center">Edit</th>
+        } @if(isDeleteBtnEnabled()){
+        <th class="text-center">Delete</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for(item of tableData() |
+      paginate:{itemsPerPage:itemsPerPage(),currentPage: page}; track
+      item[tableHeaders()[0].key]) {
+      <tr>
+        @for(key of tableHeaders(); track key.key) {
+        @if(dateTableHeaders().includes(key.key) && isDateField(item[key.key])){
+        <td class="text-center">{{ item[key.key] | date }}</td>
+        }@else if(typeof item[key.key]==='number') {
+        <td class="text-center">
+          {{ item[key.key] | number : '1.0-0' }}
+        </td>
+        } @else {
+        <td class="text-center">{{ item[key.key] }}</td>
+        } } @if(isEditBtnEnabled()){
+        <td class="text-center" (click)="editRow(item)">
+          <i class="bi bi-pencil"></i>
+        </td>
+        } @if(isDeleteBtnEnabled()){
+        <td class="text-center" (click)="deleteRow(item)">
+          <i class="bi bi-bucket"></i>
+        </td>
+        }
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

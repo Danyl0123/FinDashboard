@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "types": ["node"], // Добавляем типы для Node.js, если используются
+    "strict": true, // Рекомендуется для Angular
+    "skipLibCheck": true, // Ускоряет компиляцию, игнорируя проверку библиотек
+    "forceConsistentCasingInFileNames": true
+  },
+  "files": ["src/main.ts"], // Оставляем, если это точка входа
+  "include": [
+    "src/**/*.ts", // Включаем все TypeScript-файлы
+    "src/**/*.d.ts" // Включаем файлы с определениями типов
+  ],
+  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
+}

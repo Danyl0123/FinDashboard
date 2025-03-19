@@ -1,0 +1,85 @@
+@if(loader){
+<div class="container p-3">
+  <div
+    class="d-flex justify-content-between gap-2 mb-4 align-items-start fade-in"
+  >
+    <app-transaction-form
+      class="fade-in"
+      [categories]="categories()"
+      class="w-100"
+    />
+    <app-dashboard
+      class="fade-in"
+      [chartOptions]="chartOptions"
+      [dashboardData]="transactionData()"
+    />
+  </div>
+  @if(transactions().length>0){
+  <app-table-with-filters
+    class="fade-in"
+    [tableData]="transactions()"
+    [tableHeaders]="tableHeaders()"
+    [dateTableHeaders]="['createdAt']"
+    [isDeleteBtnEnabled]="true"
+    [isEditBtnEnabled]="true"
+    (deleteRowHandler)="deleteTransactionHandler($event)"
+    (editRowHandler)="editTransaction($event)"
+  />
+  } @else {
+  <app-non-availability-block
+    class="fade-in"
+    [text]="'You don`t have any transactions yet.Create transactions firts!'"
+  />
+  }
+</div>
+}@else { <loader /> }
+
+<ng-template #editFormTemplate>
+  <form class="d-flex flex-column gap-2" [formGroup]="editForm">
+    <label>
+      Title
+      <input class="form-control" type="text" formControlName="title" />
+    </label>
+
+    <label>
+      Amount
+      <input class="form-control" type="text" formControlName="amount" />
+    </label>
+
+    <label>
+      Категорія
+      <ng-select
+        class="form-control"
+        [items]="categories()"
+        bindLabel="title"
+        bindValue="id"
+        [searchable]="true"
+        [multiple]="false"
+        formControlName="category"
+      ></ng-select>
+    </label>
+
+    <div class="d-flex gap-3">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="incomeRadio"
+          formControlName="type"
+          value="income"
+        />
+        <label class="form-check-label" for="incomeRadio">Income</label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="expenseRadio"
+          formControlName="type"
+          value="expense"
+        />
+        <label class="form-check-label" for="expenseRadio">Expense</label>
+      </div>
+    </div>
+  </form>
+</ng-template>

@@ -1,0 +1,15 @@
+<div class="modal-header d-flex justify-content-between">
+  <h3>{{ title }}</h3>
+  <button class="btn btn-danger" (click)="modalService.close()">✕</button>
+</div>
+
+<div class="modal-body">
+  <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-secondary" (click)="modalService.close()">
+    Close
+  </button>
+  <button class="btn btn-success" (click)="confirmEdit.emit()">Save</button>
+</div>

@@ -1,0 +1,43 @@
+.ng-select.form-control ::ng-deep .ng-dropdown-panel {
+  border: 1px solid #ced4da !important;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) !important;
+  background-color: #fff !important;
+  left: 0;
+  top: 30px;
+}
+
+.ng-select.form-control ::ng-deep .ng-option {
+  padding: 8px 10px !important;
+  background-color: #fff !important;
+  color: #333 !important;
+}
+
+.ng-select.form-control ::ng-deep .ng-option.ng-option-marked {
+  background-color: #f8f9fa !important;
+  color: #333 !important;
+}
+
+.ng-select.form-control ::ng-deep .ng-arrow-wrapper .ng-arrow {
+  border-color: #666 transparent transparent !important;
+}
+
+.ng-select.form-control ::ng-deep .ng-clear-wrapper {
+  color: #999 !important;
+}
+
+.ng-select.form-control ::ng-deep .ng-placeholder {
+  color: #6c757d !important;
+}
+
+.ng-select.form-control.ng-select-disabled ::ng-deep .ng-select-container {
+  background-color: #e9ecef !important;
+  opacity: 0.65;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.pointer:hover {
+  color: #333;
+}

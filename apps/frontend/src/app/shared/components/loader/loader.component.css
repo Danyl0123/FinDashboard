@@ -1,0 +1,262 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Затемненный фон */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.coin-loader {
+  position: relative;
+  font-size: 5rem;
+  background: linear-gradient(
+    to top,
+    gold 0%,
+    gold 0%,
+    #a9a9a9 0%,
+    #a9a9a9 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: fill-coin 2s infinite ease-in-out;
+}
+
+@keyframes fill-coin {
+  0% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 0%,
+      #a9a9a9 0%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  5% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 5%,
+      #a9a9a9 5%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  10% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 10%,
+      #a9a9a9 10%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  15% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 15%,
+      #a9a9a9 15%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  20% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 20%,
+      #a9a9a9 20%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  25% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 25%,
+      #a9a9a9 25%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  30% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 30%,
+      #a9a9a9 30%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  35% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 35%,
+      #a9a9a9 35%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  40% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 40%,
+      #a9a9a9 40%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  45% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 45%,
+      #a9a9a9 45%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  50% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 50%,
+      #a9a9a9 50%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  55% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 55%,
+      #a9a9a9 55%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  60% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 60%,
+      #a9a9a9 60%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  65% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 65%,
+      #a9a9a9 65%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  70% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 70%,
+      #a9a9a9 70%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  75% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 75%,
+      #a9a9a9 75%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  80% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 80%,
+      #a9a9a9 80%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  85% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 85%,
+      #a9a9a9 85%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  90% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 90%,
+      #a9a9a9 90%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  95% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 95%,
+      #a9a9a9 95%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  100% {
+    background: linear-gradient(
+      to top,
+      gold 0%,
+      gold 100%,
+      #a9a9a9 100%,
+      #a9a9a9 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}

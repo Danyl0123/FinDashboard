@@ -1,0 +1,22 @@
+<div class="p-2">
+  <h3 class="fw-bolder mb-3" style="text-wrap: nowrap">Latest transactions</h3>
+  <ul class="nav-list">
+    @for(transaction of transactions();track transaction.id){
+    <li
+      class="nav-item d-flex align-items-center gap-3 justify-content-between mb-3"
+    >
+      <div class="d-flex flex-column gap-1">
+        <span class="fw-bold fs-5">{{ transaction.title }}</span>
+        <span class="fs-6">{{ transaction.type }}</span>
+      </div>
+      <span
+        [ngStyle]="{
+          color: transaction.type === 'income' ? 'rgb(50, 205, 50)' : 'red'
+        }"
+        >{{ transaction.type === "income" ? "+" : "-"
+        }}{{ transaction.amount }}</span
+      >
+    </li>
+    }
+  </ul>
+</div>

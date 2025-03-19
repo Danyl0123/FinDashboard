@@ -1,0 +1,17 @@
+@if(activeMessages()){
+<div class="wrapper">
+  <div class="clear-all-block" (click)="hideAll()">Clear all</div>
+
+  @for(error of errors();track $index){
+  <div class="error-block block mb-1">
+    {{ error }}
+    <i class="bi bi-x" (click)="hideError(error)"></i>
+  </div>
+  } @for(info of infos();track $index){
+  <div class="info-block block mb-1">
+    {{ info }}
+    <i class="bi bi-x" (click)="hideInfo(info)"></i>
+  </div>
+  }
+</div>
+}

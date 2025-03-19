@@ -1,0 +1,9 @@
+[class*="table-header"] th {
+  background-color: rgb(118, 118, 186) !important;
+}
+tr {
+  cursor: pointer;
+}
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: rgb(118, 118, 186);
+}

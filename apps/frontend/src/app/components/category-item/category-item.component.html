@@ -1,0 +1,20 @@
+@if(category()){
+<div class="category-card align-items-center gap-4">
+  <div class="d-flex flex-column gap-2">
+    <h3>{{ category()?.title }}</h3>
+    <span style="white-space: nowrap"
+      >{{ category()?.transactions?.length }} транзакцій</span
+    >
+  </div>
+  @if(isEditEnabled()){
+  <div class="category-actions d-flex gap-2">
+    <button class="edit-btn" (click)="editCategory.emit(category()!)">
+      🖊️
+    </button>
+    <button class="delete-btn" (click)="deleteCategory.emit(category()!)">
+      🗑️
+    </button>
+  </div>
+  }
+</div>
+}

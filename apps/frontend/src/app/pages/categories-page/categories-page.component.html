@@ -1,0 +1,68 @@
+@if(!loader){
+<div class="container">
+  <div class="header pt-4 d-flex align-items-start fade-in">
+    <h3 class="header__title">Your`s categories</h3>
+    <button class="add-btn" (click)="addCategory()">+ Add category</button>
+  </div>
+
+  @if(categoriesList().length>0){
+  <div class="categories-list">
+    @for(category of categoriesList();track category.id){
+    <app-category-item
+      class="fade-in"
+      [category]="category"
+      (deleteCategory)="deleteCategory($event)"
+      (editCategory)="editCategory($event)"
+    />
+    }
+  </div>
+  } @else {
+  <app-non-availability-block
+    class="fade-in"
+    [text]="'You don`t have any categories added yet.Сreate categories first!'"
+  />
+  }
+</div>
+} @else{
+<loader />
+}
+<ng-template #confirm let-modal>
+  <div
+    class="modal-header d-flex justify-content-between"
+    style="background-color: rgb(52, 52, 85)"
+  >
+    <h5 class="modal-title">Confirmation</h5>
+    <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss()"
+      aria-label="Close"
+    >
+      <span style="font-size: 25px" aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div
+    class="modal-body"
+    style="background-color: rgb(118, 118, 186) !important"
+  >
+    <p class="fw-bold">
+      Are you sure you want to delete the category
+      <span class="fw-bold fs-5" style="color: rgb(33, 33, 121)">{{
+        body
+      }}</span
+      >?
+    </p>
+  </div>
+  <div class="modal-footer" style="background-color: rgb(52, 52, 85)">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="modal.close('confirm')"
+    >
+      Delete
+    </button>
+  </div>
+</ng-template>

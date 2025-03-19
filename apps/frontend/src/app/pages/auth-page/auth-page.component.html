@@ -1,0 +1,60 @@
+<div class="container">
+  <div
+    class="d-flex vh-100 flex-column justify-content-center align-items-center p-3"
+  >
+    <div class="card">
+      <h3 class="card-title mb-5 text-center pt-2 fw-bold">
+        {{ isLogin() ? "Login" : "Registration" }}
+      </h3>
+      <div class="card-body text-center" style="min-width: 400px">
+        <form [formGroup]="form" class="d-flex flex-column gap-2 mb-3">
+          <label class="form-label">
+            <input
+              type="email"
+              class="form-control"
+              formControlName="userLogin"
+              placeholder=" Email"
+              autocomplete="email"
+              (keydown.enter)="submitBtn.click()"
+            />
+          </label>
+          <label class="form-label">
+            <input
+              type="password"
+              class="form-control"
+              formControlName="userPassword"
+              placeholder=" Password"
+              autocomplete="current-password"
+              (keydown.enter)="submitBtn.click()"
+            />
+          </label>
+        </form>
+        <div class="d-flex flex-column gap-2 mb-3">
+          <button
+            #submitBtn
+            (click)="onSubmit()"
+            [ngClass]="{ disabled: form.invalid }"
+            class="btn btn-success"
+          >
+            Submit
+          </button>
+
+          <button
+            class="btn btn-light d-flex justify-content-between"
+            (click)="loginWithGoogleService()"
+          >
+            <i class="bi bi-google"></i>Continue with Google<span></span>
+          </button>
+        </div>
+
+        <button class="bttn" (click)="isLogin.set(!isLogin())">
+          {{
+            isLogin()
+              ? "You don`t have an account?"
+              : "Already have an account?"
+          }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

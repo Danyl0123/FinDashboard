@@ -1,0 +1,32 @@
+.wrapper {
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+  width: 300px;
+}
+.clear-all-block {
+  background-color: rgb(213, 171, 63);
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.error-block {
+  background-color: rgb(209, 61, 61);
+}
+.block {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+.info-block {
+  background-color: rgb(53, 142, 53);
+}
+.bi {
+  width: 20px;
+}
