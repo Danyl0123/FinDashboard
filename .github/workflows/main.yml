@@ -1,16 +1,19 @@
 name: Deploy dashboard app
+
 on:
   push:
     branches: [main]
+
 jobs:
   ci:
     runs-on: ubuntu-latest
-    steps:
-      - name: get repo
-        uses: actions/checkout@v5
 
-      - name: setup Node
-        uses: actions/setup-node@v5
+    steps:
+      - name: Get repo
+        uses: actions/checkout@v4 # v5 может быть нестабильной
+
+      - name: Setup Node
+        uses: actions/setup-node@v4 # v4 более стабильная
         with:
           node-version: '22'
           cache: 'npm'
@@ -28,23 +31,25 @@ jobs:
             ${{ runner.os }}-node-
             ${{ runner.os }}-
 
-      - name: install deps
+      - name: Install dependencies
         run: npm ci
 
+      # Исправление: Angular строит в dist/, не в build/
       - name: Build project
         run: npm run build
         working-directory: apps/frontend
 
-      - name: upload build
+      # Исправление: правильный путь для Angular build
+      - name: Upload build
         uses: actions/upload-artifact@v4
         with:
-          name: my-buildeed-app
-          path: apps/frontend/build
+          name: my-built-app # исправлена опечатка "buildeed"
+          path: apps/frontend/dist # Angular строит в dist/
 
-      - name: download artifact
-        uses: actions/download-artifact@v5
+      - name: Download artifact
+        uses: actions/download-artifact@v4 # используйте v4 для совместимости
         with:
-          name: my-buildeed-app
+          name: my-built-app
 
       - name: Deploying
         run: echo 'Deploying...'
