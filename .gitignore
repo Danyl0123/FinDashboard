@@ -7,8 +7,8 @@
 
 .env
 **/.env
-apps/frontend/src/environments/environments.ts
-apps/frontend/src/environments/*.ts
+# apps/frontend/src/environments/environments.ts
+# apps/frontend/src/environments/*.ts
 
 client_secret_*.json
 

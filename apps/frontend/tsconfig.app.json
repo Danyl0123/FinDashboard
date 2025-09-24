@@ -5,7 +5,6 @@
     "target": "ES2022",
     "module": "ES2022",
     "moduleResolution": "node",
-    "types": ["node"], // Добавляем типы для Node.js, если используются
     "strict": true, // Рекомендуется для Angular
     "skipLibCheck": true, // Ускоряет компиляцию, игнорируя проверку библиотек
     "forceConsistentCasingInFileNames": true

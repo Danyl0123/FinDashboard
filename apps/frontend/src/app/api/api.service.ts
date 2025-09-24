@@ -1,16 +1,17 @@
 import { computed, inject, Injectable } from '@angular/core';
-import { enviroment } from '../../enviroments/enviroments';
+
 import { AuthService } from '../auth/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../models/categories.model';
 import { Transaction } from '../models/transactions.model';
+import {environment} from '../../enviroments/enviroments'
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   private readonly authService = inject(AuthService);
   private readonly http = inject(HttpClient);
-  baseUrl = computed(() => enviroment.apiUrl);
+  baseUrl = computed(() => environment.apiUrl);
   readonly bearer = this.authService.getToken();
 
   getCategories() {

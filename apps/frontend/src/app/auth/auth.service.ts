@@ -12,7 +12,7 @@ import { User, UserAuth } from './auth.model';
 import { MessageBoxService } from '../shared/services/message-box.service';
 import { catchError, of, take, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { enviroment } from '../../enviroments/enviroments';
+import { environment } from '../../enviroments/enviroments';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ export class AuthService {
   private readonly route = inject(Router);
   private readonly messageService = inject(MessageBoxService);
   private readonly destroyRef = inject(DestroyRef);
-  private apiUrl = computed(() => enviroment.apiUrl);
+  private apiUrl = computed(() => environment.apiUrl);
   isAuth = signal(false);
 
   constructor() {
