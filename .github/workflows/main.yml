@@ -1,0 +1,40 @@
+name: Deploy dashboard app
+on: 
+  push:
+    branches: [main]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get repo
+      - uses: actions/checkout@v5
+
+      - name: setup Node
+      - uses: actions/setup-node@v5
+        with:
+           node-version: 18
+
+    
+      - name: Restore Node.js cache
+        id: cache-node-modules
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ~/.npm
+            node_modules
+            apps/frontend/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json', 'apps/frontend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            ${{ runner.os }}-
+
+      - name: install deps
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+        working-directory: apps/frontend
+
+      - name: Deploying
+        run: echo 'Deploying...'
+        
