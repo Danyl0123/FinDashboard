@@ -33,6 +33,7 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: apps/fronend
 
       # Исправление: Angular строит в dist/, не в build/
       - name: Build project
