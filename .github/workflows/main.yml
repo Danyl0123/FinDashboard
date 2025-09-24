@@ -1,68 +1,39 @@
-name: Deploy dashboard app
-
+name: Deploy to Firebase Hosting on merge
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  ci:
+  build_and_deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Get repo
-        uses: actions/checkout@v4 # v5 может быть нестабильной
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4 # v4 более стабильная
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
 
-      - name: Restore Node.js cache
-        id: cache-node-modules
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.npm
-            node_modules
-            apps/frontend/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json', 'apps/frontend/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-            ${{ runner.os }}-
-
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm ci
-        working-directory: apps/frontend
 
-      - name: Generate environment file
-        run: node scripts/set-env.js
-        working-directory: apps/frontend
-        env:
-          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
-          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
-          FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
-          FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
-          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
-          API_URL: ${{ secrets.API_URL }}
+      - name: Install frontend dependencies
+        run: |
+          cd apps/frontend
+          npm ci
 
-      # Исправление: Angular строит в dist/, не в build/
-      - name: Build project
-        run: npm run build
-        working-directory: apps/frontend
+      - name: Build
+        run: |
+          cd apps/frontend
+          npm run build
 
-      # Исправление: правильный путь для Angular build
-      - name: Upload build
-        uses: actions/upload-artifact@v4
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          name: my-built-app # исправлена опечатка "buildeed"
-          path: apps/frontend/dist # Angular строит в dist/
-
-      - name: Download artifact
-        uses: actions/download-artifact@v4 # используйте v4 для совместимости
-        with:
-          name: my-built-app
-
-      - name: Deploying
-        run: echo 'Deploying...'
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TEST_WF_UPDATING }}
+          channelId: live
+          projectId: test-wf-updating
+          entryPoint: ./apps/frontend
