@@ -35,6 +35,17 @@ jobs:
         run: npm run build
         working-directory: apps/frontend
 
+      - name: upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-buildeed-app
+          path: apps/frontend/build
+
+      - name: download artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: my-buildeed-app
+
       - name: Deploying
         run: echo 'Deploying...'
         
