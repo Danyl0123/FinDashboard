@@ -17,9 +17,7 @@ jobs:
           cache: 'npm'
 
       - name: Install frontend dependencies
-        run: |
-          cd apps/frontend
-          npm ci
+        run: npm ci
 
       - name: Build
         run: npm run build-front
