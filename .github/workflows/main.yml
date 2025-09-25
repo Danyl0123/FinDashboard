@@ -22,9 +22,7 @@ jobs:
           npm ci
 
       - name: Build
-        run: |
-          cd apps/frontend
-          npm run build
+        run: npm run build-front
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
