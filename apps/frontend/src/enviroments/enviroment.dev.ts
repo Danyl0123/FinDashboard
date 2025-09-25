@@ -1,13 +1,10 @@
-// export const environment = {
-//     production: false,
-//     apiUrl: 'http://localhost:3000/api',
-// };
 export const environment = {
   production: false,
   backendUrls: {
     apiUrl: 'http://localhost:3000/api',
   },
   API_BASE_URL: '/api/v0',
+
   firebaseConfig: {
     apiKey: 'YOUR_API_KEY',
     authDomain: 'test-wf-updating.firebaseapp.com',

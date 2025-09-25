@@ -29,7 +29,10 @@
     "tslib": "^2.3.0",
     "zone.js": "^0.15.0"
   },
-  
+  "scripts": {
+    "start-front": "nx serve front-end --configuration development",
+    "build-front": "nx build front-end --configuration production"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.0.0",
     "@angular-devkit/core": "^19.0.0",

@@ -1,5 +1,10 @@
 export const environment = {
   production: true,
+  backendUrls: {
+    apiUrl: 'http://localhost:88888/api',
+  },
+  API_BASE_URL: '/api/v0',
+
   firebaseConfig: {
     apiKey: 'PLACEHOLDER_API_KEY',
     authDomain: 'PLACEHOLDER_AUTH_DOMAIN',
@@ -8,5 +13,4 @@ export const environment = {
     messagingSenderId: 'PLACEHOLDER_MESSAGING_SENDER_ID',
     appId: 'PLACEHOLDER_APP_ID',
   },
-  apiUrl: 'PLACEHOLDER_API_URL',
 };

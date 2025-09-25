@@ -4,14 +4,15 @@ import { AuthService } from '../auth/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../models/categories.model';
 import { Transaction } from '../models/transactions.model';
-import {environment} from '../../enviroments/enviroments'
+import { environment } from '../../enviroments/enviroments';
+import { urlConfig } from 'src/enviroments/url-config';
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   private readonly authService = inject(AuthService);
   private readonly http = inject(HttpClient);
-  baseUrl = computed(() => environment.apiUrl);
+  baseUrl = computed(() => urlConfig.backendUrl);
   readonly bearer = this.authService.getToken();
 
   getCategories() {
